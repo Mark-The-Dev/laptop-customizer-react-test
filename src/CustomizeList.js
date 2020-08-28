@@ -15,8 +15,6 @@ class CustomizeList extends Component {
     const featureHash = feature + '-' + idx;
     const options = FEATURES[feature].map(item => {
       const itemHash = slugify(JSON.stringify(item));
-      //console.log(item.name)
-      console.log(this.props.theState[feature].name)
       return (
         <div key={itemHash} className="feature__item">
           <input
@@ -24,7 +22,7 @@ class CustomizeList extends Component {
             id={itemHash}
             className="feature__option"
             name={slugify(feature)}
-            checked={item.name === this.props.theState[feature].name}
+            checked={item.name === this.props.theState[feature].name ? item.name : this.props.theState[feature].name }
             onChange={e => this.props.updateFeature(feature, item)}
           />
           <label htmlFor={itemHash} className="feature__label">

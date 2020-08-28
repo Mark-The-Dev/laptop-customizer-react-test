@@ -6,7 +6,7 @@ import slugify from 'slugify';
 import Cart from './Cart'
 import CustomizeList from './CustomizeList'
 import Total from './Total'
-
+import Header from './Header'
 import './App.css';
 
 // This object will allow us to
@@ -56,9 +56,8 @@ class App extends Component {
   
     return (
       <div className="App">
-        <header>
-          <h1>ELF Computing | Laptops</h1>
-        </header>
+        <Header />
+   
         <main>
           <form className="main__form">
             <h2>Customize your laptop</h2>

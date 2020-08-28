@@ -10,7 +10,16 @@ class Cart extends Component {
   summary = Object.keys(this.props.theState).map((feature, idx) => {
     const featureHash = feature + '-' + idx;
     const selectedOption = this.props.theState[feature];
+    //console.log(this.props.theState[feature])
+    //console.log(this.props.theState[idx])
+    //console.log(selectedOption)
+    
+    
+    // if (selectedOption === ){
 
+    // }
+    
+    
     return (
       <div className="summary__option" key={featureHash}>
         <div className="summary__option__label">{feature} </div>
@@ -20,6 +29,11 @@ class Cart extends Component {
         </div>
       </div>
     );
+
+
+
+
+
   });
 
 

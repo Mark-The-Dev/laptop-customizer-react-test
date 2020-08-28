@@ -1,32 +1,24 @@
 import React, { Component } from 'react';
+import USCurrencyFormat from './currency'
 
-const USCurrencyFormat = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD'
-});
 
+//Options Component
 class Total extends Component {
 
-   total = Object.keys(this.props.theState).reduce(
-    (acc, curr) => acc + this.props.theState[curr].cost,
-    0
-  );
+ 
 
     render(){
+      
+      let total = Object.keys(this.props.theState).reduce(
+        (acc, curr) => acc + this.props.theState[curr].cost,
+        0
+      );      
       return (
         <>
-        {USCurrencyFormat.format(this.total)}
+        {USCurrencyFormat.format(total)}
         </>
-
       )
-
-
-
     }
-
-
-
-
 }
 
 

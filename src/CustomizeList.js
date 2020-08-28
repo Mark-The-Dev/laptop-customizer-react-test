@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import slugify from 'slugify';
-
+import FEATURES from './index'
 
 const USCurrencyFormat = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -11,10 +11,12 @@ const USCurrencyFormat = new Intl.NumberFormat('en-US', {
 
 class CustomizeList extends Component {
 
-  features = Object.keys(this.props.theseFeatures).map((feature, idx) => {
+  features = Object.keys(FEATURES).map((feature, idx) => {
     const featureHash = feature + '-' + idx;
-    const options = this.props.theseFeatures[feature].map(item => {
+    const options = FEATURES[feature].map(item => {
       const itemHash = slugify(JSON.stringify(item));
+      //console.log(item.name)
+      console.log(this.props.theState[feature].name)
       return (
         <div key={itemHash} className="feature__item">
           <input
@@ -31,7 +33,7 @@ class CustomizeList extends Component {
         </div>
       );
     });
-
+    
     return (
       <fieldset className="feature" key={featureHash}>
         <legend className="feature__name">
@@ -47,6 +49,7 @@ class CustomizeList extends Component {
 
 
   render() {
+    //console.log(this.props.theState)
     return (
       <>
       {this.features}

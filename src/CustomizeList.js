@@ -11,9 +11,9 @@ const USCurrencyFormat = new Intl.NumberFormat('en-US', {
 
 class CustomizeList extends Component {
 
-  features = Object.keys(props.theseFeatures).map((feature, idx) => {
+  features = Object.keys(this.props.theseFeatures).map((feature, idx) => {
     const featureHash = feature + '-' + idx;
-    const options = this.props.features[feature].map(item => {
+    const options = this.props.theseFeatures[feature].map(item => {
       const itemHash = slugify(JSON.stringify(item));
       return (
         <div key={itemHash} className="feature__item">
@@ -22,8 +22,8 @@ class CustomizeList extends Component {
             id={itemHash}
             className="feature__option"
             name={slugify(feature)}
-            checked={item.name === this.state.selected[feature].name}
-            onChange={e => this.updateFeature(feature, item)}
+            checked={item.name === this.props.theState[feature].name}
+            onChange={e => this.props.updateFeature(feature, item)}
           />
           <label htmlFor={itemHash} className="feature__label">
             {item.name} ({USCurrencyFormat.format(item.cost)})

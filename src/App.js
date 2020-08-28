@@ -5,7 +5,7 @@ import FEATURES from './index'
 import slugify from 'slugify';
 import Cart from './Cart'
 import CustomizeList from './CustomizeList'
-
+import Total from './Total'
 
 import './App.css';
 
@@ -19,27 +19,27 @@ const USCurrencyFormat = new Intl.NumberFormat('en-US', {
 class App extends Component {
 
   constructor(props) {
-   super(props);
-   this.state = {
-    selected: {
+    super(props);
+    this.state = {
+     selected: {
       Processor: {
-        name: '17th Generation Intel Core HB (7 Core with donut spare)',
-        cost: 700
-      },
-      'Operating System': {
-        name: 'Ubuntu Linux 16.04',
-        cost: 200
-      },
-      'Video Card': {
-        name: 'Toyota Corolla 1.5v',
-        cost: 1150.98
-      },
-      Display: {
-        name: '15.6" UHD (3840 x 2160) 60Hz Bright Lights and Knobs',
-        cost: 1500
+         name: '17th Generation Intel Core HB (7 Core with donut spare)',
+          cost: 700
+        },
+        'Operating System': {
+          name: 'Ubuntu Linux 16.04',
+         cost: 200
+        },
+        'Video Card': {
+          name: 'Toyota Corolla 1.5v',
+         cost: 1150.98
+        },
+        Display: {
+         name: '15.6" UHD (3840 x 2160) 60Hz Bright Lights and Knobs',
+         cost: 1500
+        }
       }
-    }
-  };
+    };
   }
   
 
@@ -54,26 +54,6 @@ class App extends Component {
   render() {
     
 
-    const summary = Object.keys(this.state.selected).map((feature, idx) => {
-      const featureHash = feature + '-' + idx;
-      const selectedOption = this.state.selected[feature];
-
-      return (
-        <div className="summary__option" key={featureHash}>
-          <div className="summary__option__label">{feature} </div>
-          <div className="summary__option__value">{selectedOption.name}</div>
-          <div className="summary__option__cost">
-            {USCurrencyFormat.format(selectedOption.cost)}
-          </div>
-        </div>
-      );
-    });
-
-    const total = Object.keys(this.state.selected).reduce(
-      (acc, curr) => acc + this.state.selected[curr].cost,
-      0
-    );
-
     return (
       <div className="App">
         <header>
@@ -84,15 +64,22 @@ class App extends Component {
             <h2>Customize your laptop</h2>
             <CustomizeList 
               theseFeatures={this.props.features}
+              theState={this.state.selected}
+              updateFeature={this.updateFeature}
             />
           </form>
           <section className="main__summary">
             <h2>Your cart</h2>
-            {summary}
+            <Cart 
+              theState={this.state.selected}
+            
+            />
             <div className="summary__total">
               <div className="summary__total__label">Total</div>
               <div className="summary__total__value">
-                {USCurrencyFormat.format(total)}
+                <Total
+                  theState={this.state.selected}
+                />
               </div>
             </div>
           </section>

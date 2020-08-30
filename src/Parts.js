@@ -6,7 +6,7 @@ import USCurrencyFormat from './currency'
 
 //Options Component
 
-function Options (props) {
+function Parts (props) {
 
 
   return props.FEATURES[props.feature].map(item => {
@@ -31,4 +31,4 @@ function Options (props) {
 }
 
 
-export default Options
+export default Parts

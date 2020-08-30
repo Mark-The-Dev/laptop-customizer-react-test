@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import FEATURES from './index'
-import Options from './Options'
+import Parts from './Parts'
 
 
 
 //Customize List Component
-class CustomizeList extends Component {
+class Specs extends Component {
 
 
 
@@ -17,7 +17,7 @@ class CustomizeList extends Component {
           <legend className="feature__name">
             <h3>{feature}</h3>
           </legend>
-          <Options 
+          <Parts 
           feature={feature}
           FEATURES={FEATURES}
           theState={this.props.theState}
@@ -34,4 +34,4 @@ class CustomizeList extends Component {
     )
   }
 }
-export default CustomizeList
+export default Specs

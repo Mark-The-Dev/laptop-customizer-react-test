@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-
-import Cart from './Cart'
-import CustomizeList from './CustomizeList'
-import Total from './Total'
-import Header from './Header'
+import Mainform from './Mainform'
+import NavBar from './NavBar'
+import MainSummary from './MainSummary';
 import './App.css';
-
 
 
 class App extends Component {
@@ -48,31 +45,17 @@ class App extends Component {
   
     return (
       <div className="App">
-        <Header />
+        <NavBar />
    
         <main>
-          <form className="main__form">
-            <h2>Customize your laptop</h2>
-            <CustomizeList 
+            <Mainform
               theState={this.state.selected}
               updateFeatures={this.updateFeature}
             />
-          </form>
-          <section className="main__summary">
-            <h2>Your cart</h2>
-            <Cart 
-              theState={this.state.selected}
-              updateFeatures={this.updateFeature}
-            />
-            <div className="summary__total">
-              <div className="summary__total__label">Total</div>
-              <div className="summary__total__value">
-                <Total
-                  theState={this.state.selected}
-                />
-              </div>
-            </div>
-          </section>
+         <MainSummary 
+          theState={this.state.selected}
+          updateFeatures={this.updateFeature}
+         />
         </main>
       </div>
     );

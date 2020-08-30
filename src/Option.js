@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import USCurrencyFormat from './currency'
 
 //Cart Component
-class Cart extends Component {
+class Option extends Component {
 
   render(){
     let summary = Object.keys(this.props.theState).map((feature, idx) => {
@@ -28,4 +28,4 @@ class Cart extends Component {
   }
 }
 
-export default Cart
+export default Option
